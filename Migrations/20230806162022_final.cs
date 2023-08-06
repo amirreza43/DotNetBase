@@ -11,15 +11,21 @@ namespace web.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Lastname",
-                table: "Users",
-                newName: "LastName");
-
-            migrationBuilder.RenameColumn(
-                name: "Dob",
-                table: "Users",
-                newName: "Salt");
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserName = table.Column<string>(type: "TEXT", nullable: false),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
+                    LastName = table.Column<string>(type: "TEXT", nullable: true),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    Password = table.Column<string>(type: "TEXT", nullable: true),
+                    Salt = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserName);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Messages",
@@ -62,15 +68,8 @@ namespace web.Migrations
             migrationBuilder.DropTable(
                 name: "Messages");
 
-            migrationBuilder.RenameColumn(
-                name: "LastName",
-                table: "Users",
-                newName: "Lastname");
-
-            migrationBuilder.RenameColumn(
-                name: "Salt",
-                table: "Users",
-                newName: "Dob");
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

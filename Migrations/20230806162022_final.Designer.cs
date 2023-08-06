@@ -11,7 +11,7 @@ using web;
 namespace web.Migrations
 {
     [DbContext(typeof(Database))]
-    [Migration("20230804171542_final")]
+    [Migration("20230806162022_final")]
     partial class final
     {
         /// <inheritdoc />

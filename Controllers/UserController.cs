@@ -14,8 +14,6 @@ namespace web
 {
 
   public record brandModel(string brand, List<string> models);
-  [ApiController]
-  [Route("api")]
   public class UserController : ControllerBase
   {
     private User _user;

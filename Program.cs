@@ -29,12 +29,16 @@ builder.Services.AddCors(opt =>
                      .AllowAnyMethod();
            });
       });
+//Mapping AppSettings to the AppSettings section of appsettings.json
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 //Adding Context Accessor to allow for User tracking in Controllers
 builder.Services.AddHttpContextAccessor();
 
 //Mapping the IUserRepository to the UserRepository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+//Mapping the IUserService to the UserService
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
